@@ -8,7 +8,7 @@ import './styles.scss';
 import Task from 'src/components/Task';
 
 // == Composant
-const Tasks = ({ currentTasksNbr, tasks }) => (
+const Tasks = ({ currentTasksNbr, tasks, onChecked }) => (
   <div className="tasks">
     <h2 className="tasks__title">{currentTasksNbr} tâches en cours</h2>
     <ul className="tasks__list">
@@ -17,6 +17,7 @@ const Tasks = ({ currentTasksNbr, tasks }) => (
           <Task
             key={task.id}
             {...task}
+            onChecked={() => onChecked(task)}
           />
         ))
       ) : (

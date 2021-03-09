@@ -9,9 +9,10 @@
 
   &__label {
     margin-left: .5rem;
+    
   }
-
-  &--checked {
+  
+  &__label--checked {
     text-decoration: line-through;
   }
 }
