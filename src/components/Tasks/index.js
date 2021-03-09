@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './styles.scss';
@@ -26,6 +27,23 @@ const Tasks = ({ currentTasksNbr, tasks, onChecked }) => (
     </ul>
   </div>
 );
+
+// On déclare le type de props attendu
+Tasks.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+  onChecked: PropTypes.func,
+  currentTasksNbr: PropTypes.number,
+};
+
+Tasks.defaultProps = {
+  tasks: [],
+  onChecked: () => {},
+  currentTasksNbr: 0,
+};
 
 // == Export
 export default Tasks;

@@ -6,7 +6,12 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const Task = ({ id, label, done, onChecked }) => (
+const Task = ({
+  id,
+  label,
+  done,
+  onChecked,
+}) => (
   <li className="task">
     <input type="checkbox" name={id} defaultChecked={done} onChange={onChecked} /><label className={done ? 'task__label task__label--checked' : 'task__label'} htmlFor={id}>{label}</label>
   </li>
@@ -17,10 +22,12 @@ Task.propTypes = {
   id: PropTypes.number.isRequired,
   done: PropTypes.bool,
   label: PropTypes.string.isRequired,
+  onChecked: PropTypes.func,
 };
 
 Task.defaultProps = {
   done: false,
+  onChecked: () => {},
 };
 
 // == Export

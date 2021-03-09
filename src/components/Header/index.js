@@ -1,5 +1,5 @@
 // == Import npm
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // == Import
@@ -17,7 +17,7 @@ class Header extends Component {
   }
 
   render() {
-    const { onTaskSubmit, onInputChange, inputLabel } = this.props; 
+    const { onTaskSubmit, onInputChange, inputLabel } = this.props;
 
     return (
       <div className="header">
@@ -31,10 +31,14 @@ class Header extends Component {
 
 Header.propTypes = {
   onTaskSubmit: PropTypes.func,
+  onInputChange: PropTypes.func,
+  inputLabel: PropTypes.string,
 };
 
 Header.defaultProps = {
   onTaskSubmit: () => {},
+  onInputChange: () => {},
+  inputLabel: '',
 };
 
 // == Export

@@ -29,10 +29,11 @@ class Todo extends Component {
   }
 
   // Ici on met à jour le state avec le nouveau nombre de tâche à accomplir.
-  componentDidUpdate(prevProp, prevState) {
+  componentDidUpdate() {
     const { tasks, currentTasksNbr } = this.state;
     const newTasksNbr = tasks.filter((task) => !task.done).length;
     if (newTasksNbr !== currentTasksNbr) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         currentTasksNbr: newTasksNbr,
       });
@@ -65,7 +66,9 @@ class Todo extends Component {
   handleTaskChecked = (task) => {
     const { tasks } = this.state;
     // This map seams odd but can't figure how to do this better
-    const newTasks = tasks.map((taskItem) => taskItem.id === task.id ? {...taskItem, done: !taskItem.done} : taskItem); 
+    const newTasks = tasks.map((taskItem) => (
+      taskItem.id === task.id ? { ...taskItem, done: !taskItem.done } : taskItem
+    ));
     this.setState({
       tasks: sortByDone(newTasks),
     });
