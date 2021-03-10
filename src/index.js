@@ -1,6 +1,7 @@
 // == Import : npm
 import React from 'react';
 import { render } from 'react-dom';
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
 
 // == Import : local
 // Composants

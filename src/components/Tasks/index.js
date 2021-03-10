@@ -9,7 +9,7 @@ import './styles.scss';
 import Task from 'src/components/Task';
 
 // == Composant
-const Tasks = ({ currentTasksNbr, tasks, onChecked }) => (
+const Tasks = ({ currentTasksNbr, tasks, onChecked, onDelete }) => (
   <div className="tasks">
     <h2 className="tasks__title">{currentTasksNbr} tâches en cours</h2>
     <ul className="tasks__list">
@@ -19,6 +19,7 @@ const Tasks = ({ currentTasksNbr, tasks, onChecked }) => (
             key={task.id}
             {...task}
             onChecked={() => onChecked(task)}
+            onDelete={() => onDelete(task)}
           />
         ))
       ) : (
@@ -36,12 +37,14 @@ Tasks.propTypes = {
     }),
   ),
   onChecked: PropTypes.func,
+  onDelete: PropTypes.func,
   currentTasksNbr: PropTypes.number,
 };
 
 Tasks.defaultProps = {
   tasks: [],
   onChecked: () => {},
+  onDelete: () => {},
   currentTasksNbr: 0,
 };
 

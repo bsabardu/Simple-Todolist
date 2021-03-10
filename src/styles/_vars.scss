@@ -3,4 +3,5 @@
 //Colors
 $color-primary: #2E5849;
 $color-secondary: color.scale($color-primary, $lightness: -20%);
+$color-tertiary: color.scale($color-primary, $lightness: +70%);
 $color-white: #ffffff;

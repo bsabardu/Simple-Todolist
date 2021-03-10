@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .task {
   padding: 1.2rem;
   margin-bottom: 0.5rem;
@@ -5,7 +7,9 @@
   border: solid 1px #ccc;
   border-radius: 8px;
   font-size: 1.3rem;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   &__label {
     margin-left: .5rem;
@@ -14,6 +18,20 @@
   
   &__label--checked {
     text-decoration: line-through;
+  }
+
+  &__button {
+    border: 1px solid vars.$color-tertiary;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-right: 1em;
+    width: 2rem;
+    height: 2rem;
+    
+    &:hover{
+      background-color: vars.$color-tertiary;
+    }
+
   }
 }
 

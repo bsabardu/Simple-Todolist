@@ -12,9 +12,16 @@ const Task = ({
   label,
   done,
   onChecked,
+  onDelete,
 }) => (
   <li className="task">
-    <input type="checkbox" name={id} checked={done} onChange={onChecked} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
+    <div className="task__content">
+      <input type="checkbox" name={id} checked={done} onChange={onChecked} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
+    </div>
+    <div className="task__actions">
+      <button type="button" className="task__button"><i className="far fa-star"></i></button>
+      <button type="button" className="task__button" onClick={onDelete}><i className="fas fa-times"></i></button>
+    </div>
   </li>
 );
 
@@ -24,11 +31,13 @@ Task.propTypes = {
   done: PropTypes.bool,
   label: PropTypes.string.isRequired,
   onChecked: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 Task.defaultProps = {
   done: false,
   onChecked: () => {},
+  onDelete: () => {},
 };
 
 // == Export

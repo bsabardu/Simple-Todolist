@@ -42,14 +42,13 @@ class Todo extends Component {
 
   handleSubmitTask = () => {
     const { tasks, newTaskLabel } = this.state;
-    const newTask = {
-      id: (Math.max(...tasks.map((task) => task.id))) + 1,
-      label: newTaskLabel,
-      done: false,
-    };
 
     this.setState({
-      tasks: sortByDone([...tasks, newTask]),
+      tasks: sortByDone([...tasks, {
+        id: (Math.max(...tasks.map((task) => task.id))) + 1,
+        label: newTaskLabel,
+        done: false,
+      }]),
       newTaskLabel: '',
       currentTasksNbr: tasks.filter((task) => !task.done).length,
     });
@@ -73,6 +72,14 @@ class Todo extends Component {
     });
   }
 
+  handleTaskDelete = (task) => {
+    const { tasks } = this.state;
+    const newTasks = tasks.filter((taskItem) => taskItem.id !== task.id);
+    this.setState({
+      tasks: sortByDone(newTasks),
+    });
+  }
+
   render() {
     const { currentTasksNbr, tasks, newTaskLabel } = this.state;
     return (
@@ -82,7 +89,12 @@ class Todo extends Component {
           onInputChange={this.handleInputChange}
           inputLabel={newTaskLabel}
         />
-        <Tasks currentTasksNbr={currentTasksNbr} tasks={tasks} onChecked={this.handleTaskChecked} />
+        <Tasks
+          currentTasksNbr={currentTasksNbr}
+          tasks={tasks}
+          onChecked={this.handleTaskChecked}
+          onDelete={this.handleTaskDelete}
+        />
       </div>
     );
   }
