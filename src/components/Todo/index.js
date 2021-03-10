@@ -28,6 +28,11 @@ class Todo extends Component {
     };
   }
 
+  componentDidMount() {
+    const { tasks } = this.state;
+    this.addFavorite(tasks);
+  }
+
   // Ici on met à jour le state avec le nouveau nombre de tâche à accomplir.
   componentDidUpdate() {
     const { tasks, currentTasksNbr } = this.state;
@@ -38,6 +43,13 @@ class Todo extends Component {
         currentTasksNbr: newTasksNbr,
       });
     }
+  }
+
+  addFavorite = (tasks) => {
+    const tasksWithFavorite = tasks.map((task) => ({...task, favorite: false }));
+    this.setState({
+      tasks: sortByDone([...tasksWithFavorite]),
+    });
   }
 
   handleSubmitTask = () => {
@@ -61,7 +73,7 @@ class Todo extends Component {
     });
   }
 
-  handleTaskChecked = (task) => {
+  handleTaskChecked = (task) => () => {
     const { tasks } = this.state;
     // This map seams odd but can't figure how to do this better
     const newTasks = tasks.map((taskItem) => (
@@ -75,6 +87,16 @@ class Todo extends Component {
   handleTaskDelete = (task) => {
     const { tasks } = this.state;
     const newTasks = tasks.filter((taskItem) => taskItem.id !== task.id);
+    this.setState({
+      tasks: sortByDone(newTasks),
+    });
+  }
+
+  handleTaskFavorite = (task) => {
+    const { tasks } = this.state;
+    const newTasks = tasks.map((taskItem) => (
+      taskItem.id === task.id ? { ...taskItem, favorite: !taskItem.favorite } : taskItem
+    ));
     this.setState({
       tasks: sortByDone(newTasks),
     });
@@ -94,6 +116,7 @@ class Todo extends Component {
           tasks={tasks}
           onChecked={this.handleTaskChecked}
           onDelete={this.handleTaskDelete}
+          onFavorite={this.handleTaskFavorite}
         />
       </div>
     );

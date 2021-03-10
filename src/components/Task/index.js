@@ -11,15 +11,17 @@ const Task = ({
   id,
   label,
   done,
+  favorite,
   onChecked,
   onDelete,
+  onFavorite,
 }) => (
   <li className="task">
     <div className="task__content">
       <input type="checkbox" name={id} checked={done} onChange={onChecked} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
     </div>
     <div className="task__actions">
-      <button type="button" className="task__button"><i className="far fa-star"></i></button>
+      <button type="button" className="task__button" onClick={onFavorite}><i className={classnames({'fas': favorite, 'far': !favorite},'fa-star')}></i></button>
       <button type="button" className="task__button" onClick={onDelete}><i className="fas fa-times"></i></button>
     </div>
   </li>
@@ -29,15 +31,19 @@ const Task = ({
 Task.propTypes = {
   id: PropTypes.number.isRequired,
   done: PropTypes.bool,
+  favorite: PropTypes.bool,
   label: PropTypes.string.isRequired,
   onChecked: PropTypes.func,
   onDelete: PropTypes.func,
+  onFavorite: PropTypes.func,
 };
 
 Task.defaultProps = {
   done: false,
+  favorite: false,
   onChecked: () => {},
   onDelete: () => {},
+  onFavorite: () => {},
 };
 
 // == Export

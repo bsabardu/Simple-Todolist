@@ -9,7 +9,7 @@ import './styles.scss';
 import Task from 'src/components/Task';
 
 // == Composant
-const Tasks = ({ currentTasksNbr, tasks, onChecked, onDelete }) => (
+const Tasks = ({ currentTasksNbr, tasks, onTaskChecked, onTaskDelete, onTaskFavorite }) => (
   <div className="tasks">
     <h2 className="tasks__title">{currentTasksNbr} tâches en cours</h2>
     <ul className="tasks__list">
@@ -18,8 +18,9 @@ const Tasks = ({ currentTasksNbr, tasks, onChecked, onDelete }) => (
           <Task
             key={task.id}
             {...task}
-            onChecked={() => onChecked(task)}
-            onDelete={() => onDelete(task)}
+            onChecked={onTaskChecked(task)}
+            onDelete={() => onTaskDelete(task)}
+            onFavorite={() => onTaskFavorite(task)}
           />
         ))
       ) : (
@@ -36,15 +37,17 @@ Tasks.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ),
-  onChecked: PropTypes.func,
-  onDelete: PropTypes.func,
+  onTaskChecked: PropTypes.func,
+  onTaskDelete: PropTypes.func,
+  onTaskFavorite: PropTypes.func,
   currentTasksNbr: PropTypes.number,
 };
 
 Tasks.defaultProps = {
   tasks: [],
-  onChecked: () => {},
-  onDelete: () => {},
+  onTaskChecked: () => {},
+  onTaskDelete: () => {},
+  onTaskFavorite: () => {},
   currentTasksNbr: 0,
 };
 
