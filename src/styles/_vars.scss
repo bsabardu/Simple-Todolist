@@ -1,6 +1,6 @@
-//Colors
+@use 'sass:color';
 
 //Colors
-$color-primary: #1C382F;
-$color-secondary: #2E5849;
+$color-primary: #2E5849;
+$color-secondary: color.scale($color-primary, $lightness: -20%);
 $color-white: #ffffff;

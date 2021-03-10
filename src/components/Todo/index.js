@@ -22,7 +22,7 @@ class Todo extends Component {
     // Puis on déclare le state avec son état initial même vide.
 
     this.state = {
-      tasks: sortByDone(tasksData),
+      tasks: sortByDone([...tasksData]), //On spread pour avoir un state immutable
       currentTasksNbr: tasksData.filter((task) => !task.done).length,
       newTaskLabel: '',
     };
@@ -40,8 +40,7 @@ class Todo extends Component {
     }
   }
 
-  handleSubmitTask = (event) => {
-    event.preventDefault();
+  handleSubmitTask = () => {
     const { tasks, newTaskLabel } = this.state;
     const newTask = {
       id: (Math.max(...tasks.map((task) => task.id))) + 1,

@@ -18,10 +18,14 @@ class Header extends Component {
 
   render() {
     const { onTaskSubmit, onInputChange, inputLabel } = this.props;
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      onTaskSubmit();
+    };
 
     return (
       <div className="header">
-        <form onSubmit={onTaskSubmit}>
+        <form onSubmit={handleSubmit}>
           <input className="header__input" placeholder="Ajouter une tâche" onChange={onInputChange} value={inputLabel} />
         </form>
       </div>

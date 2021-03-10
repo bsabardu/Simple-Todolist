@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // == Import
 import './styles.scss';
@@ -13,7 +14,7 @@ const Task = ({
   onChecked,
 }) => (
   <li className="task">
-    <input type="checkbox" name={id} defaultChecked={done} onChange={onChecked} /><label className={done ? 'task__label task__label--checked' : 'task__label'} htmlFor={id}>{label}</label>
+    <input type="checkbox" name={id} checked={done} onChange={onChecked} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
   </li>
 );
 
