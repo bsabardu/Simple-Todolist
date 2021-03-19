@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -21,8 +22,8 @@ const Task = ({
       <input type="checkbox" name={id} checked={done} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
     </div>
     <div className="task__actions">
-      <button type="button" className="task__button" onClick={onFavorite}><i className={classnames({'fas': favorite, 'far': !favorite},'fa-star')}></i></button>
-      <button type="button" className="task__button" onClick={onDelete}><i className="fas fa-times"></i></button>
+      <button type="button" className="task__button" onClick={onFavorite}><i className={classnames({ fas: favorite, far: !favorite }, 'fa-star')} /></button>
+      <button type="button" className="task__button" onClick={onDelete}><i className="fas fa-times" /></button>
     </div>
   </li>
 );

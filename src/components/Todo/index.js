@@ -22,7 +22,7 @@ class Todo extends Component {
     // Puis on déclare le state avec son état initial même vide.
 
     this.state = {
-      tasks: sortByDone([...tasksData]), //On spread pour avoir un state immutable
+      tasks: sortByDone([...tasksData]), // On spread pour avoir un state immutable
       currentTasksNbr: tasksData.filter((task) => !task.done).length,
       newTaskLabel: '',
     };
@@ -46,7 +46,7 @@ class Todo extends Component {
   }
 
   addFavorite = (tasks) => {
-    const tasksWithFavorite = tasks.map((task) => ({...task, favorite: false }));
+    const tasksWithFavorite = tasks.map((task) => ({ ...task, favorite: false }));
     this.setState({
       tasks: sortByDone([...tasksWithFavorite]),
     });

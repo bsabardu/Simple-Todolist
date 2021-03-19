@@ -9,7 +9,13 @@ import './styles.scss';
 import Task from 'src/components/Task';
 
 // == Composant
-const Tasks = ({ currentTasksNbr, tasks, onTaskChecked, onTaskDelete, onTaskFavorite }) => (
+const Tasks = ({
+  currentTasksNbr,
+  tasks,
+  onTaskChecked,
+  onTaskDelete,
+  onTaskFavorite,
+}) => (
   <div className="tasks">
     <h2 className="tasks__title">{currentTasksNbr} tâches en cours</h2>
     <ul className="tasks__list">
