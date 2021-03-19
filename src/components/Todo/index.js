@@ -12,7 +12,7 @@ import Tasks from 'src/components/Tasks';
 import tasksData from 'src/data/tasks';
 
 // == Utils
-import sortByDone from 'src/utils/sortByDone';
+import sortByDone from 'src/utils/sortTasks';
 
 // == Composant
 class Todo extends Component {
@@ -73,7 +73,7 @@ class Todo extends Component {
     });
   }
 
-  handleTaskChecked = (task) => () => {
+  handleTaskChecked = (task) => {
     const { tasks } = this.state;
     // This map seams odd but can't figure how to do this better
     const newTasks = tasks.map((taskItem) => (
@@ -114,9 +114,9 @@ class Todo extends Component {
         <Tasks
           currentTasksNbr={currentTasksNbr}
           tasks={tasks}
-          onChecked={this.handleTaskChecked}
-          onDelete={this.handleTaskDelete}
-          onFavorite={this.handleTaskFavorite}
+          onTaskChecked={this.handleTaskChecked}
+          onTaskDelete={this.handleTaskDelete}
+          onTaskFavorite={this.handleTaskFavorite}
         />
       </div>
     );

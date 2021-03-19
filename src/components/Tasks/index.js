@@ -18,7 +18,7 @@ const Tasks = ({ currentTasksNbr, tasks, onTaskChecked, onTaskDelete, onTaskFavo
           <Task
             key={task.id}
             {...task}
-            onChecked={onTaskChecked(task)}
+            onChecked={() => onTaskChecked(task)}
             onDelete={() => onTaskDelete(task)}
             onFavorite={() => onTaskFavorite(task)}
           />

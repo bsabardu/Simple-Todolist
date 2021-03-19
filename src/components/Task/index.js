@@ -17,8 +17,8 @@ const Task = ({
   onFavorite,
 }) => (
   <li className="task">
-    <div className="task__content">
-      <input type="checkbox" name={id} checked={done} onChange={onChecked} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
+    <div className="task__content" onClick={onChecked}>
+      <input type="checkbox" name={id} checked={done} /><label className={classnames('task__label', { 'task__label--checked': done })} htmlFor={id}>{label}</label>
     </div>
     <div className="task__actions">
       <button type="button" className="task__button" onClick={onFavorite}><i className={classnames({'fas': favorite, 'far': !favorite},'fa-star')}></i></button>
